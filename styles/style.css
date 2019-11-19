@@ -5,10 +5,15 @@ body{
     height: 100vh;
 }
 
+header{
+    background-image: url('https://www.fillmurray.com/300/200');
+    background-repeat: no-repeat;
+}
+
 header > h1{
     margin: 0 auto;
-    width: fit-content;
     height: 33vh;
+    text-align: center;
 }
 
 main{
@@ -21,7 +26,13 @@ footer{
     height: 33vh;
     width: 100vw;
     flex-shrink: 0;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.two-panel{
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 
 ul {
@@ -44,3 +55,30 @@ ul {
     background-color: #555;
     color: white;
   }
+
+.game-board{
+	width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    background-color: orange;
+    color: #fff;
+    border: 6px solid orange;
+    border-radius: 10px;
+	display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.box{
+    border: 5px solid darkgray;
+    border-radius: 4%;
+    background-color: grey;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 45px;
+}
+
+#output{
+    height: 10vh;
+    background-color: lightgrey;
+    text-align: center;
+}
