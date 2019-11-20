@@ -66,6 +66,7 @@ ul {
     border-radius: 10px;
 	display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    float:left;
 }
 
 .box{
@@ -78,7 +79,18 @@ ul {
 }
 
 #output{
+    margin: 0 auto;
     height: 10vh;
+    width: 100%;
     background-color: lightgrey;
     text-align: center;
+    display: inline-block;
+}
+
+#calculator{
+    margin: 0 auto;
+}
+
+#operators{
+    float: left;
 }
