@@ -4,27 +4,33 @@ let numberTiles = gameBoard.children
 let o = document.getElementById('operators')
 let operators = o.children
 
+let totalArr = []
 let total = ''
 
 for(let i=0;i<numberTiles.length;i++){
-    numberTiles[i].addEventListener('click',setInitialTotal)
+    numberTiles[i].addEventListener('click',concatNums)
 }
 
-for(let j=0;j<4;j++){
+for(let j=0;j<3;j++){
     operators[j].addEventListener('click',actOnOperator)
 }
 
-function setInitialTotal(){
-    total += this.textContent    
-    console.log(total)
+function concatNums(){
+    total += this.textContent
+    console.log(parseInt(total))
+}
+
+function concatAgain(){
+    //
 }
 
 function actOnOperator(){
-    //find function named 
-    runFunction(this.id, ...total)
+    runFunction(this.id, total)
 }
 
 function runFunction(name, arguments){
+    totalArr.push(parseInt(total))
+    total = 0
     var fn = window[name];
     if(typeof fn !== 'function'){
         return;
@@ -32,37 +38,39 @@ function runFunction(name, arguments){
     fn.apply(window, [...arguments]);
 }
 
-function add(...args){
-    console.log("add")
+async function add(){
+    console.log(total + " add")
+    console.log("total array = " + totalArr)
+
+    innerAdd(totalArr)
+}
+
+async function subtract(){
+    console.log(total + " subtract")
+    console.log("total array = " + totalArr)
+}
+
+async function multiply(){
+    console.log(total + " multiply")
+    console.log("total array = " + totalArr)
+}
+
+async function divide(){
+    console.log(total + " divide")
+    console.log("total array = " + totalArr)
+}
+
+let equalElem = document.getElementById('equals')
+equalElem.addEventListener('click',equals)
+
+function equals(){
+    return total
+}
+
+function innerAdd(...args){
     let base = 0
     args.forEach((num)=>{
         return base += num
     })
     return base
-}
-
-function subtract(...args){
-    console.log("subtract")
-    let base = 0
-    args.forEach((num)=>{
-        return base -= num
-    })
-    return base
-}
-
-function multiply(...args){
-    console.log("multiply")
-    let base = 1
-    args.forEach((num)=>{
-        base *= num
-    })
-    return base
-}
-
-function divide(...args){
-    console.log("divide")
-    let base = args[0]
-    args.forEach((num)=>{
-        
-    })
 }
